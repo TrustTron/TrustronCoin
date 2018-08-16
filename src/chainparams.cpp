@@ -108,7 +108,7 @@ public:
         pchMessageStart[2] = 0xa4;
         pchMessageStart[3] = 0x65;
         vAlertPubKey = ParseHex("04c32c8ab64b43228550115a862847deb294b776a71d6395e9c49477d13eac413f022e40462770dbc665f8a32aeec2a5d87839239f9a0b91a85269f90e79ab0ccc");
-        nDefaultPort = 39811;
+        nDefaultPort = 39821;
         bnProofOfWorkLimit = ~uint256(0) >> 20; // Trustron starting difficulty is 1 / 2^12
         nSubsidyHalvingInterval = 210000;
         nMaxReorganizationDepth = 100;

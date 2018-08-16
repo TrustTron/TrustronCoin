@@ -3490,8 +3490,8 @@ https://www.transifex.com/trustron-project/trustron-project-translations</transl
         <translation>Você deve especificar uma masternodeprivkey na configuração. Favor verificar o manual para obter ajuda.</translation>
     </message>
     <message>
-        <source>(39811 could be used only on mainnet)</source>
-        <translation>(39811 could be used only on mainnet)</translation>
+        <source>(39821 could be used only on mainnet)</source>
+        <translation>(39821 could be used only on mainnet)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -3502,8 +3502,8 @@ https://www.transifex.com/trustron-project/trustron-project-translations</transl
         <translation>(padrão: 1)</translation>
     </message>
     <message>
-        <source>(must be 39811 for mainnet)</source>
-        <translation>(deve ser 39811 para mainnet)</translation>
+        <source>(must be 39821 for mainnet)</source>
+        <translation>(deve ser 39821 para mainnet)</translation>
     </message>
     <message>
         <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
