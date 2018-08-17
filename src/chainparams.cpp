@@ -103,13 +103,12 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-        //myfix
-        pchMessageStart[0] = 0xc1;//0x72;
-        pchMessageStart[1] = 0x3b;//0x52;
-        pchMessageStart[2] = 0xa4;//0x58;
-        pchMessageStart[3] = 0x65;//0x67;
+        pchMessageStart[0] = 0xc1;
+        pchMessageStart[1] = 0x3b;
+        pchMessageStart[2] = 0xa4;
+        pchMessageStart[3] = 0x65;
         vAlertPubKey = ParseHex("04c32c8ab64b43228550115a862847deb294b776a71d6395e9c49477d13eac413f022e40462770dbc665f8a32aeec2a5d87839239f9a0b91a85269f90e79ab0ccc");
-        nDefaultPort = 39821;//30001;//myfix
+        nDefaultPort = 39821;
         bnProofOfWorkLimit = ~uint256(0) >> 20; // Trustron starting difficulty is 1 / 2^12
         nSubsidyHalvingInterval = 210000;
         nMaxReorganizationDepth = 100;
@@ -117,18 +116,18 @@ public:
         nRejectBlockOutdatedMajority = 950;
         nToCheckBlockUpgradeMajority = 1000;
         nMinerThreads = 0;
-        nTargetTimespan = 1.5 * 60;//60; // Trustron: 1 day  //myfix
-        nTargetSpacing = 1.5 * 60;//60; //Trustron: 1 minute //myfix
-        nMaturity = 10;//120;
+        nTargetTimespan = 1.5 * 60;
+        nTargetSpacing = 1.5 * 60;
+        nMaturity = 10;
         nMasternodeCountDrift = 20;
-        nMaxMoneyOut = 3500000 * COIN;//500000000 * COIN; //500,000,000//myfix
+        nMaxMoneyOut = 3500000 * COIN;
 
         /** Height or Time Based Activations **/
-        nLastPOWBlock = 57600;//800; //myfix
+        nLastPOWBlock = 8000;
         nModifierUpdateBlock = 999999999;
-        nZerocoinStartHeight = 57601;//999999999;//801; //??? masternode startblock is 800 ours is 1500
+        nZerocoinStartHeight = 8001;
         nAccumulatorStartHeight = 1;
-        nZerocoinStartTime = 2000000000;//1527811200; // Friday, June 1, 2018 12:00:00 AM - GMT
+        nZerocoinStartTime = 2000000000;
         nBlockEnforceSerialRange = 1; //Enforce serial range starting this block
         nBlockRecalculateAccumulators = ~1; //Trigger a recalculation of accumulators
         nBlockFirstFraudulent = ~1; //First block that bad serials emerged
@@ -155,42 +154,9 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1533513600;//myfix 2018/8/6 //1525551420;  // Thursday, Saturday, May 5, 2018 8:17:00 PM GNT
+        genesis.nTime = 1533513600; // Thursday, Saturday, May 5, 2018 8:17:00 PM GNT
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 1232053;//myfix
-
-        // myfix for create genesis
-        if (false && genesis.GetHash() != hashGenesisBlock)
-        {
-            printf("Searching for genesis block...\n");
-            // This will figure out a valid hash and Nonce if you're
-            // creating a different genesis block:
-            uint256 hashTarget = uint256().SetCompact(genesis.nBits);
-            uint256 thash;
- 
-            while(1)
-            {
-                // Generic scrypt
-                thash = genesis.GetHash();
-
-                if (thash <= hashTarget)
-                    break;
-                if ((genesis.nNonce & 0xFFF) == 0)
-                {
-                    printf("nonce %08X: hash = %s (target = %s)\n", genesis.nNonce, thash.ToString().c_str(), hashTarget.ToString().c_str());
-                }
-                ++genesis.nNonce;
-                if (genesis.nNonce == 0)
-                {
-                    printf("NONCE WRAPPED, incrementing time\n");
-                    ++genesis.nTime;
-                }
-            }
-            printf("genesis.nTime = %u \n", genesis.nTime);
-            printf("genesis.nNonce = %u \n", genesis.nNonce);
-            printf("genesis.GetHash = %s\n", genesis.GetHash().ToString().c_str());
-            printf("genesis.GetMerkleRoot = %s\n", genesis.hashMerkleRoot.ToString().c_str());            
-        } 
+        genesis.nNonce = 1232053;        
 
         hashGenesisBlock = genesis.GetHash();
         assert(hashGenesisBlock == uint256("00000b4d9a3292ceb8d149529f4f5f9347ec6d6ca14c5381484145576c7d9256"));
@@ -200,7 +166,7 @@ public:
         vSeeds.push_back(CDNSSeedData("seed2", "159.65.1.182"));
         vSeeds.push_back(CDNSSeedData("seed3", "178.128.195.194"));
                 
-		base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 127);//myfix 127:t 65:T
+		base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 127);
 		base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 19);
 		base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 239);
 		base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x02)(0x2D)(0x25)(0x33).convert_to_container<std::vector<unsigned char> >();
